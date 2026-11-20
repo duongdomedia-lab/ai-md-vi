@@ -267,17 +267,21 @@
         window.addEventListener('keydown', (e) => {
           if (e.key === 'Escape' && screen.classList.contains('is-open')) closeTldr(true);
         });
-        window.addEventListener('scroll', () => {
-          const max = document.documentElement.scrollHeight - window.innerHeight;
+        function checkEnd() {
+          const lenis = window.__lenis;
+          const max = (lenis && lenis.limit) ? lenis.limit : (document.documentElement.scrollHeight - window.innerHeight);
+          const pos = (lenis && typeof lenis.scroll === 'number') ? lenis.scroll : window.scrollY;
           if (max < 400) return;
-          const atBottom = window.scrollY >= max - 36;
+          const atBottom = pos >= max - 40;
           if (atBottom && !dismissedAtEnd && !document.body.classList.contains('index-open')) {
             openTldr();
-          } else if (window.scrollY < max - 260) {
+          } else if (pos < max - 260) {
             dismissedAtEnd = false;
             if (screen.classList.contains('is-open')) closeTldr(false);
           }
-        }, { passive: true });
+        }
+        window.addEventListener('scroll', checkEnd, { passive: true });
+        setInterval(checkEnd, 350);
       })();
     </script>
   </body>

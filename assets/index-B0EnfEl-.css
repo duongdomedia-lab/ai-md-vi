@@ -235,3 +235,48 @@
   border-color: #fc4109;
   color: #fc4109;
 }
+
+
+/* === Mobile HUD & Touch Responsiveness Fix === */
+@media (max-width: 640px) {
+  .hud {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    gap: 6px;
+  }
+  .hud-mug {
+    width: 44px !important;
+    height: 44px !important;
+    margin: -6px 6px -6px 0 !important;
+  }
+  .hud-mug__eye {
+    width: 7px !important;
+    height: 7px !important;
+  }
+  .hud-file {
+    display: none !important;
+  }
+  .hud__r {
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .hud-lang {
+    margin-right: 2px !important;
+    padding: 3px 8px !important;
+    font-size: 10px !important;
+    height: 26px !important;
+  }
+  .hud-tldr {
+    margin-right: 2px !important;
+    padding: 3px 7px !important;
+    font-size: 10px !important;
+  }
+  .hud-watch {
+    padding-right: 8px !important;
+    font-size: 12px !important;
+  }
+  .hud-index {
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+  }
+}
